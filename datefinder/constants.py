@@ -10,7 +10,8 @@ TIMEZONES_PATTERN = "ACDT|ACST|ACT|ACWDT|ACWST|ADDT|ADMT|ADT|AEDT|AEST|AFT|AHDT|
 ## explicit north american timezones that get replaced
 NA_TIMEZONES_PATTERN = "pacific|eastern|mountain|central"
 ALL_TIMEZONES_PATTERN = TIMEZONES_PATTERN + "|" + NA_TIMEZONES_PATTERN
-DELIMITERS_PATTERN = r"[/\:\-\,\s\_\+\@]+"
+DELIMITERS_PATTERN = r"[/\:\-\_\+\@]+"
+TEXT_DELIM_PATTERN  =r"[\,\s\_\+\@\.]+"
 
 # Allows for straightforward datestamps e.g 2017, 201712, 20171223. Created with:
 #  YYYYMM_PATTERN = '|'.join(['19\d\d'+'{:0>2}'.format(mon)+'|20\d\d'+'{:0>2}'.format(mon) for mon in range(1, 13)])
@@ -32,7 +33,6 @@ ISO8601_PATTERN = r"(?P<years>-?(\:[1-9][0-9]*)?[0-9]{4})\-(?P<months>1[0-2]|0[1
 UNDELIMITED_STAMPS_PATTERN = "|".join(
     [YYYYMMDDHHMMSS_PATTERN, YYYYMMDD_PATTERN, YYYYMM_PATTERN, ISO8601_PATTERN]
 )
-DELIMITERS_PATTERN = r"[/\:\-\,\.\s\_\+\@]+"
 TIME_PERIOD_PATTERN = r"a\.m\.|am|p\.m\.|pm"
 ## can be in date strings but not recognized by dateutils
 EXTRA_TOKENS_PATTERN = r"due|by|on|during|standard|daylight|savings|time|date|dated|of|to|through|between|until|at|day"
@@ -91,7 +91,7 @@ DATES_PATTERN = """
         |
         (?P<digits>{digits})(?P<digits_suffixes>{digits_suffixes})?
         |
-        \s(?P<days>{days})\s
+        (?P<days>{days})(?P<textdelimiters>{textdelimiters})
         |
         (?P<months>{months})
         |
@@ -120,6 +120,7 @@ DATES_PATTERN = DATES_PATTERN.format(
     days=DAYS_PATTERN,
     months=MONTHS_PATTERN,
     delimiters=DELIMITERS_PATTERN,
+    textdelimiters=TEXT_DELIM_PATTERN,
     positionnal_tokens=POSITIONNAL_TOKENS,
     extra_tokens=EXTRA_TOKENS_PATTERN,
 )
