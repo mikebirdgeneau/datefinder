@@ -11,7 +11,8 @@ logger = logging.getLogger(__name__)
     ['March 20, 2015 3:30 pm ACWDT in the parking lot', 'March 20, 2015 3:30 pm ACWDT'],
     ['blah blah March 20, 2015 3pm MADMT for some thing', 'March 20, 2015 3pm MADMT'],
     ['we need it back on Friday 2p.m. central standard time', 'on Friday 2p.m. central standard time'],
-    ['the big fight at 2p.m. mountain standard time on ufc.com', 'at 2p.m. mountain standard time on']
+    ['the big fight at 2p.m. mountain standard time on ufc.com', 'at 2p.m. mountain standard time on'],
+    ['something was reviewed.',''] # Test false positive of *.wed
 ])
 def test_extract_date_strings(date_string, expected_match_date_string):
     dt = datefinder.DateFinder()
