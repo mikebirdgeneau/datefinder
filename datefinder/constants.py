@@ -103,7 +103,7 @@ DATES_PATTERN = """
         |
         ## These tokens could be in phrases that dateutil does not yet recognize
         ## Some are US Centric
-        (?P<extra_tokens>{extra_tokens})
+        \s(?P<extra_tokens>{extra_tokens})\s
     ## We need at least three items to match for minimal datetime parsing
     ## ie 10pm
     ){{1,1}}
