@@ -91,7 +91,7 @@ DATES_PATTERN = """
         |
         (?P<digits>{digits})(?P<digits_suffixes>{digits_suffixes})?
         |
-        \s(?P<days>{days})
+        \s(?P<days>{days})\s
         |
         (?P<months>{months})
         |
